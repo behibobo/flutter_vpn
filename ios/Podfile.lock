@@ -1,0 +1,28 @@
+PODS:
+  - app_usage (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_vpn (0.1.0):
+    - Flutter
+
+DEPENDENCIES:
+  - app_usage (from `.symlinks/plugins/app_usage/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_vpn (from `.symlinks/plugins/flutter_vpn/ios`)
+
+EXTERNAL SOURCES:
+  app_usage:
+    :path: ".symlinks/plugins/app_usage/ios"
+  Flutter:
+    :path: Flutter
+  flutter_vpn:
+    :path: ".symlinks/plugins/flutter_vpn/ios"
+
+SPEC CHECKSUMS:
+  app_usage: 18cc17df843298a060be2342ac914ae36a30288b
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_vpn: a19ae227ed35745bec45b20c8c0614249945eec8
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0

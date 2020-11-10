@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "417838127842",
+    "firebase_url": "https://myvpn-878c4.firebaseio.com",
+    "project_id": "myvpn-878c4",
+    "storage_bucket": "myvpn-878c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417838127842:android:dfac4cd09ebf597828dcbb",
+        "android_client_info": {
+          "package_name": "com.codinglodge.myvpn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417838127842-7op8ar7guh6rtu2ig32jsob088umkeeg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoZC5_V9BNyjwDbMUC69j1Y5XrC361Uh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417838127842-7op8ar7guh6rtu2ig32jsob088umkeeg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
