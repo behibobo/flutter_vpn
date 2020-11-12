@@ -165,34 +165,28 @@ class _MainPageState extends State<MainPage> {
       ..show(anchorType: AnchorType.top);
   }
 
-  InterstitialAd _interstitialAd;
+  InterstitialAd myInterstitial;
 
-  bool _isInterstitialAdReady;
-
-  void _loadInterstitialAd() {
-    _interstitialAd.load();
+  InterstitialAd buildInterstitialAd() {
+    return InterstitialAd(
+      adUnitId: AdManager.interstitialAdUnitId,
+      listener: (MobileAdEvent event) {
+        if (event == MobileAdEvent.failedToLoad) {
+          myInterstitial..load();
+        } else if (event == MobileAdEvent.closed) {
+          myInterstitial = buildInterstitialAd()..load();
+        }
+        print(event);
+      },
+    );
   }
 
-  void _onInterstitialAdEvent(MobileAdEvent event) {
-    switch (event) {
-      case MobileAdEvent.loaded:
-        _isInterstitialAdReady = true;
-        break;
-      case MobileAdEvent.failedToLoad:
-        _isInterstitialAdReady = false;
-        print('Failed to load an interstitial ad');
-        break;
-      case MobileAdEvent.closed:
-        // _moveToHome();
-        break;
-      default:
-      // do nothing
-    }
+  void showInterstitialAd() {
+    myInterstitial..show();
   }
 
   @override
   void initState() {
-    super.initState();
     _getservers();
     checkAuth();
     FlutterVpn.prepare();
@@ -216,15 +210,8 @@ class _MainPageState extends State<MainPage> {
     );
 
     _loadBannerAd();
-
-    _isInterstitialAdReady = false;
-
-    _interstitialAd = InterstitialAd(
-      adUnitId: AdManager.interstitialAdUnitId,
-      listener: _onInterstitialAdEvent,
-    );
-
-    _loadInterstitialAd();
+    myInterstitial = buildInterstitialAd()..load();
+    super.initState();
   }
 
   void checkAuth() async {
@@ -237,13 +224,13 @@ class _MainPageState extends State<MainPage> {
   @override
   void dispose() async {
     _bannerAd?.dispose();
-    _interstitialAd?.dispose();
+    myInterstitial.dispose();
     super.dispose();
   }
 
   void connectVpn() {
-    _interstitialAd.show();
     if (state == FlutterVpnState.connected) {
+      showInterstitialAd();
       FlutterVpn.disconnect();
       timerSubscription.cancel();
       timerStream = null;
@@ -253,8 +240,8 @@ class _MainPageState extends State<MainPage> {
         secondsStr = '00';
       });
     } else {
+      showInterstitialAd();
       // RewardedVideoAd.instance.show();
-
       timerStream = stopWatchStream();
       timerSubscription = timerStream.listen((int newTick) {
         setState(() {

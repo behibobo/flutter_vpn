@@ -1,3 +1,4 @@
+import 'package:MyVPN/pages/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:MyVPN/pages/about_page.dart';
 import 'package:MyVPN/pages/setting_page.dart';
@@ -29,7 +30,10 @@ class MainDrawer extends StatelessWidget {
                 ])),
           ),
           new ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => LoginScreen()));
+            },
             title: Text(
               "Buy Premium",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.0),

@@ -28,6 +28,7 @@ dependencies:
   provider: ^3.0.0
   http: ^0.12.0
   firebase_admob: ^0.9.3
+  loading_animations: ^2.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -63,6 +64,7 @@ flutter:
     - assets/turbo.png
     - assets/icon.png
     - assets/globe.png
+    - assets/unlock.png
 
   fonts:
     - family: Montserrat-Bold
